@@ -143,7 +143,6 @@ public class RedisDaoImpl implements RedisDao {
 			public Boolean doInRedis(JedisCommands commands) {
 
 				commands.set(key, value);
-	
 				return true;
 			}
 		});

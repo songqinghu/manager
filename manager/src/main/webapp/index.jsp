@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Hello World</h1>
+	<a href="/test/logout">注销</a>
 </body>
 </html>
