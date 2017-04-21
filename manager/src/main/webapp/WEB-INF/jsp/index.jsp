@@ -7,7 +7,7 @@
 <title>登录帐号</title>
 </head>
 <body>
-	<h1>Hello World</h1>
-	<a href="/test/logout">注销</a>
+	<h1><a href="/jump/file">文件上传页面</a></h1>
+	<h1><a href="/jump/show">数据展示页面</a></h1>
 </body>
 </html>

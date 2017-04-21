@@ -6,6 +6,8 @@
 	<display-name>image-manager</display-name>
 	<welcome-file-list>
 		<!-- <welcome-file>/WEB-INF/jsp/xinggan.jsp</welcome-file> -->
+		<welcome-file>login.html</welcome-file>
+		<welcome-file>login.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>

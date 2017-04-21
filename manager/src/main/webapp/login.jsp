@@ -198,7 +198,7 @@ a {
 		        	  if(json.success == true){
 /* 		        		  $.cookie('user_token', json.data, { expires: 2, path: '/' }); 
 		        		  $.cookie('CN',json.CN, { expires: 2, path: '/' }); */
-		        		  window.location.href="/"; 
+		        		  window.location.href="/jump/index"; 
 		        	  }else{
 		        		  alert("用户名或密码错误");
 		        	  }

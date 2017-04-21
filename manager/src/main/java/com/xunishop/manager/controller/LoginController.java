@@ -41,10 +41,10 @@ public class LoginController {
             
             Cookie cookie = new Cookie("user_token",token);
             cookie.setPath("/");
-            cookie.setMaxAge(60*30);
+            cookie.setMaxAge(60*60);
             response.addCookie(cookie);
             
-            redisDao.setValueByKey(cookie.getValue(), "userId");
+            redisDao.setValueByKey( cookie.getValue(),username);
             
             result.setSuccess(true);
             result.setData(cookie.getValue());

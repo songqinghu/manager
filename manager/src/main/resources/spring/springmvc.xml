@@ -16,9 +16,36 @@
 	<!-- 配置解析器 -->
 		<mvc:annotation-driven></mvc:annotation-driven>
 	<!-- 拦截器 -->	
-		<mvc:interceptors>
-			<bean class="com.xunishop.manager.interceptor.DefendSpiderInterceptor"/>
-		</mvc:interceptors>
+	
+	    <!--配置拦截器, 多个拦截器,顺序执行 -->  
+    <mvc:interceptors>    
+        <mvc:interceptor>    
+            <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->  
+            <mvc:mapping path="/**" />  
+<!--             <mvc:mapping path="/user/**" />  
+            <mvc:mapping path="/test/**" />  --> 
+            <bean class="com.xunishop.manager.interceptor.DefendSpiderInterceptor"/>  
+        </mvc:interceptor>  
+        <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 --> 
+                <mvc:interceptor>    
+            <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->  
+            <mvc:mapping path="/**" />  
+<!--             <mvc:mapping path="/user/**" />  
+            <mvc:mapping path="/test/**" />  --> 
+               <mvc:exclude-mapping path="/**/fonts/*"/>
+		       <mvc:exclude-mapping path="/**/*.css"/>
+		       <mvc:exclude-mapping path="/**/*.js"/>
+		       <mvc:exclude-mapping path="/**/*.png"/>
+		       <mvc:exclude-mapping path="/**/*.gif"/>
+		       <mvc:exclude-mapping path="/**/*.jpg"/>
+		       <mvc:exclude-mapping path="/**/*.jpeg"/>
+		       <mvc:exclude-mapping path="/login/**"/>
+
+            <bean class="com.xunishop.manager.interceptor.UserLoginInterceptor"/>  
+        </mvc:interceptor>  
+         
+    </mvc:interceptors>  
+    
 	<!-- 视图解析器 -->
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="prefix"  value="/WEB-INF/jsp/"></property>
@@ -33,6 +60,7 @@
 	<mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**"/>
 	<mvc:resources location="/WEB-INF/img/" mapping="/img/**"/>
 	<mvc:resources location="/WEB-INF/common/" mapping="/common/**"/>
+	<mvc:resources location="/WEB-INF/html/" mapping="/html/**"/>
 	
 	<!-- 文件上传 多段解析器 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
